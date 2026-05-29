@@ -1,0 +1,2 @@
+ALTER TABLE public.staff ADD COLUMN IF NOT EXISTS square_team_member_id text;
+CREATE INDEX IF NOT EXISTS idx_staff_square_team_member ON public.staff (square_team_member_id) WHERE square_team_member_id IS NOT NULL;

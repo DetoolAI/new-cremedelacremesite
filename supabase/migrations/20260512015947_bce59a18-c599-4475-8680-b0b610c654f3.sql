@@ -1,0 +1,1 @@
+DELETE FROM public.membership_redemptions WHERE id='5c0dda27-df18-4e70-bca3-e885e37ef057';

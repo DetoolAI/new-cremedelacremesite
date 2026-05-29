@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tanstack-start-app",
+  "compatibility_date": "2025-09-24",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "@tanstack/react-start/server-entry",
+  // Serve files from /public as static assets. Per-path Content-Type
+  // overrides (including the .well-known/ rule that forces
+  // application/octet-stream with no extension rewriting) live in
+  // public/_headers, which Cloudflare reads alongside this config.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  }
+}

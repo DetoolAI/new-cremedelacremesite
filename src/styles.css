@@ -1,0 +1,181 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-cream: var(--cream);
+  --color-blush: var(--blush);
+  --font-serif: "Playfair Display", "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Inter", "Montserrat", system-ui, sans-serif;
+  --font-display: "Oswald", "Anton", "Montserrat", system-ui, sans-serif;
+  --font-script: "Cormorant Garamond", "Times New Roman", serif;
+}
+
+:root {
+  --radius: 0.25rem;
+  /* Cream/ivory base */
+  --background: oklch(0.985 0.012 85);
+  --foreground: oklch(0.22 0.015 60);
+  --card: oklch(0.99 0.008 85);
+  --card-foreground: oklch(0.22 0.015 60);
+  --popover: oklch(0.99 0.008 85);
+  --popover-foreground: oklch(0.22 0.015 60);
+  /* Coral red as primary — pulled from logo */
+  --primary: oklch(0.62 0.19 28);
+  --primary-foreground: oklch(0.985 0.012 85);
+  --secondary: oklch(0.94 0.025 35);
+  --secondary-foreground: oklch(0.35 0.12 28);
+  --muted: oklch(0.95 0.018 40);
+  --muted-foreground: oklch(0.5 0.04 35);
+  --accent: oklch(0.9 0.05 30);
+  --accent-foreground: oklch(0.4 0.15 28);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.985 0.012 85);
+  --border: oklch(0.9 0.025 35);
+  --input: oklch(0.92 0.022 35);
+  --ring: oklch(0.62 0.19 28);
+  /* Brand accents — warm champagne/cream for text contrast on cream AND red */
+  --gold: oklch(0.55 0.13 45);
+  --gold-soft: oklch(0.95 0.04 80);
+  --cream: oklch(0.97 0.018 60);
+  --blush: oklch(0.88 0.06 25);
+
+  --gradient-cream: linear-gradient(180deg, oklch(0.985 0.012 85), oklch(0.95 0.025 40));
+  --gradient-gold: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  --shadow-soft: 0 20px 60px -20px oklch(0.55 0.15 28 / 0.18);
+  --shadow-luxe: 0 30px 80px -30px oklch(0.5 0.18 28 / 0.25);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  /* "font-serif" = bold editorial serif (Playfair Display), pairing with the logo */
+  .font-serif { font-family: var(--font-serif); font-weight: 800; letter-spacing: -0.01em; }
+  .font-display { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.04em; }
+  .font-script { font-family: var(--font-script); font-weight: 400; font-style: italic; }
+  .tracking-luxe { letter-spacing: 0.28em; }
+  .text-gold { color: var(--gold); }
+  .bg-gold { background-color: var(--gold); }
+  .border-gold { border-color: var(--gold); }
+  .gradient-gold-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-luxe { box-shadow: var(--shadow-luxe); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slow-zoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.15); }
+}
+@keyframes shimmer {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+@keyframes gold-shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.animate-fade-up { animation: fade-up 1s cubic-bezier(0.22,1,0.36,1) both; }
+.animate-fade-in { animation: fade-in 1.2s ease-out both; }
+.animate-slow-zoom { animation: slow-zoom 14s ease-in-out infinite alternate; }
+.animate-shimmer { animation: shimmer 3s ease-in-out infinite; }
+
+.delay-150 { animation-delay: 0.15s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-700 { animation-delay: 0.7s; }
+
+/* ---------- Mobile polish ---------- */
+html { -webkit-text-size-adjust: 100%; }
+html, body { overflow-x: clip; max-width: 100vw; }
+img, video { max-width: 100%; height: auto; }
+
+/* Any wide table auto-scrolls horizontally on small screens instead of breaking layout */
+@media (max-width: 768px) {
+  table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  pre { max-width: 100%; overflow-x: auto; }
+}
+
+/* Tighten oversized luxury type on small screens so headlines/buttons fit */
+@media (max-width: 640px) {
+  /* Section padding compaction */
+  .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
+  .py-24 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .py-32 { padding-top: 4rem; padding-bottom: 4rem; }
+  .pt-40 { padding-top: 6.5rem; }
+  .pb-24 { padding-bottom: 3rem; }
+  .pb-32 { padding-bottom: 4rem; }
+  .px-6 { padding-left: 1.1rem; padding-right: 1.1rem; }
+  .gap-12 { gap: 2rem; }
+  .gap-16 { gap: 2.25rem; }
+
+  /* Headline scaling */
+  .text-7xl { font-size: 2.5rem; line-height: 1.05; }
+  .text-6xl { font-size: 2.25rem; line-height: 1.05; }
+  .text-5xl { font-size: 2rem; line-height: 1.1; }
+  .text-4xl { font-size: 1.65rem; line-height: 1.15; }
+
+  /* Tighten over-spaced uppercase tracking on tiny screens */
+  .tracking-\[0\.28em\] { letter-spacing: 0.18em; }
+  .tracking-\[0\.22em\] { letter-spacing: 0.14em; }
+
+  /* Card padding */
+  .p-8 { padding: 1.25rem; }
+  .p-12 { padding: 1.5rem; }
+}

@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /auth
+Disallow: /members
+Disallow: /member-login
+Disallow: /member-book
+Disallow: /member-booking
+Disallow: /membership-card
+Disallow: /staff
+Disallow: /api/
+Disallow: /lovable/
+
+Sitemap: https://cremedelacremenails.com/sitemap.xml

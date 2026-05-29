@@ -1,0 +1,1 @@
+UPDATE public.staff SET pin='2375' WHERE name ILIKE 'angie%';
