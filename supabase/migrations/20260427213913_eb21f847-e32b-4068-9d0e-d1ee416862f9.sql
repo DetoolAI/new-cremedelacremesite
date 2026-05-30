@@ -1,3 +1,12 @@
+-- Generic updated_at trigger function
+CREATE OR REPLACE FUNCTION public.touch_updated_at()
+RETURNS TRIGGER LANGUAGE plpgsql AS $$
+BEGIN
+  NEW.updated_at = now();
+  RETURN NEW;
+END;
+$$;
+
 -- ============ LOYALTY ACCOUNTS ============
 CREATE TABLE public.loyalty_accounts (
   id UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,

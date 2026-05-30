@@ -17,6 +17,9 @@ CREATE TABLE public.services (
   name text NOT NULL,
   description text,
   duration_minutes int NOT NULL DEFAULT 60,
+  price_text text,
+  min_lead_minutes int NOT NULL DEFAULT 0,
+  square_variation_id text,
   display_order int NOT NULL DEFAULT 0,
   active boolean NOT NULL DEFAULT true,
   created_at timestamptz NOT NULL DEFAULT now()
@@ -28,6 +31,7 @@ CREATE TABLE public.staff (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   name text NOT NULL,
   bio text,
+  work_days int[] NOT NULL DEFAULT '{1,2,3,4,5,6}'::int[],
   display_order int NOT NULL DEFAULT 0,
   active boolean NOT NULL DEFAULT true,
   created_at timestamptz NOT NULL DEFAULT now()

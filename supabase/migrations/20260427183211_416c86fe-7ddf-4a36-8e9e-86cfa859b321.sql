@@ -1,3 +1,8 @@
+-- Ensure the Manicures category exists with its fixed UUID
+INSERT INTO public.service_categories (id, name, slug, display_order, active)
+VALUES ('dc8ed095-e498-4ee3-bae4-15cb8a0ddfc4', 'Manicures', 'manicures', 10, true)
+ON CONFLICT (id) DO NOTHING;
+
 -- Refresh the Manicures category with the current Square catalog
 DELETE FROM public.services
 WHERE category_id = 'dc8ed095-e498-4ee3-bae4-15cb8a0ddfc4';
